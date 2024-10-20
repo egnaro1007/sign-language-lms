@@ -1,0 +1,24 @@
+# Ignore Visual Studio Code settings
+.vscode/
+
+# Ignore JetBrains IDEs settings
+.idea/
+
+# Ignore Python virtual environments
+venv/
+__pycache__/
+*.pyc
+
+# Ignore node_modules for JavaScript/TypeScript projects
+node_modules/
+
+# Ignore build directories
+dist/
+build/
+
+# Ignore log files
+*.log
+
+# Ignore OS-specific files
+.DS_Store
+Thumbs.db
