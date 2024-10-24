@@ -2,7 +2,7 @@ from fastapi import APIRouter, Query
 from models.shuffle import ShuffleQuestion
 from typing import Optional
 
-shuffle_question_router = APIRouter()
+shuffle_question_router = APIRouter(prefix="/shuffle")
 
 @shuffle_question_router.get("/question/{id}")
 def get_question(id: Optional[int] = None):
