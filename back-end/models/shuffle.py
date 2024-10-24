@@ -24,10 +24,14 @@ class ShuffleQuestion(BaseModel):
         
         return complete_sentence
     
-    def load_from_database(self, id): 
+    def load_from_database(self, id=None): 
+        if id is None:
+            self.load_random_from_database()
+            return
+
         # ID does not exist
         if self.db.fetch_one("SELECT 1 FROM shuffle_sentence WHERE id = ?", (id,)) is None:
-            return None   
+            raise ValueError("ID does not exist")   
 
         rows = self.db.fetch_all("SELECT * FROM shuffle_subsequence WHERE sentence_id = ?", (id,))
         self.sub_sequences = {}
@@ -39,6 +43,8 @@ class ShuffleQuestion(BaseModel):
         
         if random_id is not None:
             self.load_from_database(random_id[0])
+
+        return random_id
 
     def save_to_database(self, id):
         if self.db.fetch_one("SELECT 1 FROM shuffle_sentence WHERE id = ?", (id,)) is None:
