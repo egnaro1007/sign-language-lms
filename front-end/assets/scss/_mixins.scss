@@ -1,0 +1,123 @@
+@mixin gradientLeftToRight($colorStart, $colorEnd){
+    background-image: -webkit-gradient(
+        linear,
+        left top,
+        right top,
+        color-stop(0, $colorStart),
+        color-stop(1, $colorEnd)
+    );
+    background-image: -o-linear-gradient(right, $colorStart 0%, $colorEnd 100%);
+    background-image: -moz-linear-gradient(right, $colorStart 0%, $colorEnd 100%);
+    background-image: -webkit-linear-gradient(right, $colorStart 0%, $colorEnd 100%);
+    background-image: -ms-linear-gradient(right, $colorStart 0%, $colorEnd 100%);
+    background-image: linear-gradient(to right, $colorStart 0%, $colorEnd 100%);
+}
+@mixin gradientTopToBottom($colorStart, $colorEnd){
+    background-image: -webkit-gradient(
+        linear,
+        left top,
+        left bottom,
+        color-stop(0, $colorStart),
+        color-stop(1, $colorEnd)
+    );
+    background-image: -o-linear-gradient(bottom, $colorStart 0%, $colorEnd 100%);
+    background-image: -moz-linear-gradient(bottom, $colorStart 0%, $colorEnd 100%);
+    background-image: -webkit-linear-gradient(bottom, $colorStart 0%, $colorEnd 100%);
+    background-image: -ms-linear-gradient(bottom, $colorStart 0%, $colorEnd 100%);
+    background-image: linear-gradient(to bottom, $colorStart 0%, $colorEnd 100%);
+}
+@function cr($size) {
+    $remSize: $size / 16px;
+    @return #{$remSize}rem;
+}
+@mixin font-size($size) {
+    font-size: $size; //Fallback in px
+    font-size: cr($size);
+}
+
+@mixin animation($animationName, $duration) {
+    -webkit-animation-name: $animationName;
+    -webkit-animation-duration: $duration;
+    -webkit-animation-iteration-count: infinite;
+    -webkit-animation-timing-function: linear;
+    -moz-animation-name: $animationName;
+    -moz-animation-duration: $duration;
+    -moz-animation-iteration-count: infinite;
+    -moz-animation-timing-function: linear;
+    -ms-animation-name: $animationName;
+    -ms-animation-duration: $duration;
+    -ms-animation-iteration-count: infinite;
+    -ms-animation-timing-function: linear;
+    
+    animation-name: $animationName;
+    animation-duration: $duration;
+    animation-iteration-count: infinite;
+    animation-timing-function: linear;
+}
+@mixin placeholder($color) {
+    &::-webkit-input-placeholder { /* Chrome/Opera/Safari */
+        color: $color;
+        font-style: italic;
+    }
+    &::-moz-placeholder { /* Firefox 19+ */
+        color: $color;
+        font-style: italic;
+    }
+    &:-ms-input-placeholder { /* IE 10+ */
+        color: $color;
+        font-style: italic;
+    }
+    &:-moz-placeholder { /* Firefox 18- */
+        color: $color;
+        font-style: italic;
+    }
+}
+@mixin blur($size) {
+    -webkit-filter: blur($size);
+    -moz-filter: blur($size);
+    -o-filter: blur($size);
+    -ms-filter: blur($size);
+    filter: blur($size);
+}
+@mixin square($size){
+    width: $size;
+    height: $size;
+}
+@mixin size($val1,$val2){
+    width: $val1;
+    height: $val2;
+}
+@mixin flexbox {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -moz-flex;
+  display: -ms-flexbox;
+  display: flex;
+}
+%flexbox {
+  @include flexbox;
+}
+@mixin border-radius($radius) {
+  -webkit-border-radius: $radius;
+  -moz-border-radius: $radius;
+  -ms-border-radius: $radius;
+  -o-border-radius: $radius;
+  border-radius: $radius;
+}
+@mixin transition($transition...) {
+  -webkit-transition: $transition;
+  -o-transition: $transition;
+  transition: $transition;
+}
+@mixin transform($argument){
+  -webkit-transform: ($argument);
+  -moz-transform: ($argument);
+  -ms-transform: ($argument);
+  -o-transform: ($argument);
+  transform: ($argument);
+}
+@mixin box-shadow($shadow...) {
+  -webkit-box-shadow: $shadow;
+  -moz-box-shadow: $shadow;
+  box-shadow: $shadow;
+}
