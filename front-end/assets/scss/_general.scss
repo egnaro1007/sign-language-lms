@@ -1,0 +1,19 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: $bg-color;
+    font-family: 'Sigmar', sans-serif;
+    color: #b4562d !important;
+    margin: 0;
+    padding: 0;
+    color: $text-color;
+}
+
+.divider {
+    display: flex;
+    margin-left: 270px;
+}

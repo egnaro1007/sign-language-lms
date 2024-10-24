@@ -1,0 +1,33 @@
+.lessons {
+    &__heading {
+        text-align: center;
+        margin-top: 30px;
+        h1 {
+            font-weight: bold;
+            margin-bottom: 20px;
+        }
+
+        p {
+            margin-bottom: 40px;
+        }
+    }
+
+    &__item {
+        background-color: #E7CD7E;
+        border: solid 2px #ba8a68;
+        border-radius: 10px;
+        padding: 20px 20px;
+        margin: 20px;
+        align-items: center;
+
+        &--right {
+            text-align: right;
+        }
+
+        &:hover {
+            background-color: #e6c45c;
+            transform: translateY(-5px);
+            text-decoration: none;
+        }
+    }
+}
