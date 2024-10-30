@@ -1,6 +1,3 @@
-import React, { useState, useEffect } from 'react';
-import { onMount } from 'svelte';
-
 export function formatTime(seconds) {
   const hours = Math.floor(seconds / 3600);
   const minutes = Math.floor((seconds % 3600) / 60);
