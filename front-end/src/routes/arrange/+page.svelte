@@ -1,9 +1,32 @@
+<script>
+	// import {countdowntimer} from './arrange.js';
+	// let count = 10;
+
+	// function countdown() {
+	// const interval = setInterval(() => {
+	// 	if (count > 0) {
+	// 	count -= 1;
+	// 	} else {
+	// 	clearInterval(interval);
+	// 	}
+	// }, 1000);
+	// }
+	// // Call countdown when the component is mounted
+	// countdown();
+
+	import { formatTime } from './arrange.js';
+	let timeLeft = 600;
+
+	
+</script>
 <div class="arrange">
 	<div class="container">
 		<div class="arrange__board">
 			<div class="arrange__time">
 				<h3>Thời gian còn lại:</h3>
-				<span>19:47</span>
+				<span>{formatTime(timeLeft)}</span>
+
+				 
 			</div>
 			<div class="arrange__count">
 				<h3>Câu hỏi:</h3>
