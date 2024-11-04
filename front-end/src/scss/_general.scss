@@ -7,3 +7,13 @@
 body {
     font-family: 'Sigmar', sans-serif;
 }
+
+.divider {
+    display: flex;
+    margin-left: 270px;
+}
+
+.content {
+    padding: 10px 20px;
+    flex: 2;
+}

@@ -1,4 +1,7 @@
 @forward "general";
-@forward "content/arrange";
 
-@import 'bootstrap/scss/bootstrap';
+@forward "components/navbar";
+@forward "components/sidebar";
+
+@forward "content/arrange";
+@forward "content/lessons";

@@ -56,7 +56,7 @@
 				</ul>
 			</div>
 		</div>
-		<img src="/khunglong.png" alt="khunglong" class="arrange__dinosaur" />
+		<img src="/images/khunglong.png" alt="khunglong" class="arrange__dinosaur" />
 		<div class="arrange__scoreboard"></div>
 	</div>
 </div>

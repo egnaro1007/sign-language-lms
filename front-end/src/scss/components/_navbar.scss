@@ -1,0 +1,36 @@
+.navbar {
+    position: fixed;
+    background-color: #ffffff;
+    width: 270px;
+    height: 100vh;
+    padding: 0 20px;
+    border-right: solid 2px #ccbfc2;
+
+    &__logo {
+        margin: 30px auto;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    &__menu {
+        list-style-type: none;
+        width: 100%;
+    }
+
+    &__item {
+        padding: 10px 30px;
+        border-radius: 10px;
+        margin-bottom: 5px;
+        color: #5e6059;
+        font-size: 18px;
+        display: flex;
+        align-items: center;
+        gap: 12px;
+
+        &:hover {
+            background-color: #d0d6c7;
+        }
+    }
+
+}
