@@ -29,7 +29,6 @@
     function previousQuestion() {
         currentIndex = Math.max(currentIndex - 1, 0);
     }
-
     fetchQuestions();
 </script>
 
@@ -37,6 +36,11 @@
     {#if loading}
         <Loading />
     {:else}
+        <div class="arrange__count">
+            <h3>Câu hỏi:</h3>
+            <span>{currentIndex + 1}/{questions.length}</span>
+        </div>
+        
         {#if questions[currentIndex].type === 'cloze'}
             <FillInTheBlank questionData={ questions[currentIndex] } />
         {:else if questions[currentIndex].type === 'rearrangement'}
