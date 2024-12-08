@@ -1,10 +1,10 @@
 .navbar {
     position: fixed;
     background-color: #ffffff;
-    width: 270px;
+    width: 255px;
     height: 100vh;
     padding: 0 20px;
-    border-right: solid 2px #ccbfc2;
+    border-right: solid 1px $gray;
 
     &__logo {
         margin: 30px auto;
@@ -22,14 +22,15 @@
         padding: 10px 30px;
         border-radius: 10px;
         margin-bottom: 5px;
-        color: #5e6059;
+        color: $dark-gray;
         font-size: 18px;
         display: flex;
         align-items: center;
         gap: 12px;
 
         &:hover {
-            background-color: #d0d6c7;
+            background-color: $gray;
+            cursor: pointer;
         }
     }
 

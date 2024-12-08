@@ -1,7 +1,9 @@
-@forward "general";
+@import "general";
+@import "variables";
 
-@forward "components/navbar";
-@forward "components/sidebar";
+@import "components/navbar";
+@import "components/sidebar";
 
-@forward "content/arrange";
-@forward "content/lessons";
+@import "content/arrange";
+@import "content/lessons";
+@import "content/fc";
