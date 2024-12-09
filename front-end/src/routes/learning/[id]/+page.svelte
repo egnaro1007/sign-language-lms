@@ -17,26 +17,37 @@
         await new Promise(resolve => setTimeout(resolve, 1000));
         questions = [
             {
-              questionID: 1,
-              description: 'Sắp xếp từ thành câu',
-              type: 'rearrangement',
-              question: 'Sắp xếp câu',
-              answerList: [
-                'video:https://qipedc.moet.gov.vn/videos/W00442.mp4',
-                'video:https://qipedc.moet.gov.vn/videos/W02931T.mp4',
-                'video:https://qipedc.moet.gov.vn/videos/W03712.mp4',
-                'video:https://qipedc.moet.gov.vn/videos/W00559.mp4'
-              ],
-              key: [
-                'video:https://qipedc.moet.gov.vn/videos/W02931T.mp4',
-                'video:https://qipedc.moet.gov.vn/videos/W03712.mp4',
-                'video:https://qipedc.moet.gov.vn/videos/W00559.mp4',
-                'video:https://qipedc.moet.gov.vn/videos/W00442.mp4'
-              ]
+                questionID: 1,
+                type: 'rearrangement',
+                question: 'Sắp xếp câu',
+                description: 'Sắp xếp từ thành câu',
+                answerList: [
+                    'video:https://qipedc.moet.gov.vn/videos/W00442.mp4',
+                    'video:https://qipedc.moet.gov.vn/videos/W02931T.mp4',
+                    'video:https://qipedc.moet.gov.vn/videos/W03712.mp4',
+                    'video:https://qipedc.moet.gov.vn/videos/W00559.mp4'
+                ],
+                key: [
+                    'video:https://qipedc.moet.gov.vn/videos/W02931T.mp4',
+                    'video:https://qipedc.moet.gov.vn/videos/W03712.mp4',
+                    'video:https://qipedc.moet.gov.vn/videos/W00559.mp4',
+                    'video:https://qipedc.moet.gov.vn/videos/W00442.mp4'
+                ]
             },
-            { questionID: 2, description: 'Sắp xếp từ thành câu có nghĩa', type: 'rearrangement', question: 'Sắp xếp câu', answerList: ['câu', 'Sắp xếp', 'có nghĩa', 'từ', 'thành'] },
-            { questionID: 3, type: 'cloze', question: 'Điền từ vào chỗ trống', answerList: ['Câu hỏi' , 'điền', ,'vào', 'chỗ trống'] },
-            { questionID: 4, type: 'translation', question: 'Dịch từ này', answerList: ['Từ cần dịch'] },
+            { 
+                questionID: 2, description: 'Sắp xếp từ thành câu có nghĩa', type: 'rearrangement', question: 'Sắp xếp câu', answerList: ['câu', 'Sắp xếp', 'có nghĩa', 'từ', 'thành'] 
+            },
+            { 
+                questionID: 3, type: 'cloze', question: 'Điền từ vào chỗ trống', answerList: ['Câu hỏi' , 'điền', ,'vào', 'chỗ trống'] 
+            },
+            { 
+                questionID: 4,
+                type: 'translation', 
+                question: 'Dịch từ này', 
+                description: 'Trái Đất là thành tinh chúng ta đang sống',
+                answerList: ['Trái Đất'],
+                key: ['trái đất']
+            },
             { questionID: 5, type: 'translation'}
         ];
         loading = false;
@@ -74,9 +85,9 @@
             {#if questions[currentIndex].type === 'cloze'}
                 <FillInTheBlank questionData={ questions[currentIndex] } />
             {:else if questions[currentIndex].type === 'rearrangement'}
-                <SentenceRearrangement questionData={ questions[currentIndex]} finishQuestion={ (amount) => finishQuestion(amount) } />
+                <SentenceRearrangement questionData={ questions[currentIndex] } finishQuestion={ (amount) => finishQuestion(amount) } />
             {:else if questions[currentIndex].type === 'translation'}
-                <Translation questionData={ questions[currentIndex] } />
+                <Translation questionData={ questions[currentIndex] } finishQuestion={ (amount) => finishQuestion(amount) }/>
             {/if}
         
             <button on:click={previousQuestion} disabled={currentIndex === 0}>Previous</button>
