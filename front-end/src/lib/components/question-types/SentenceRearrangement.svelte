@@ -5,7 +5,6 @@
     let draggedItem = null;
     let dragoverItem = null;
 
-
     $: if (questionData.answerList) {
         userInputList = new Array(questionData.answerList.length).fill('');
     }
@@ -17,14 +16,12 @@
     function handleDragStart(event, listType, index) {
         if (listType[index] === '') return;
         draggedItem = { listType, index };
-        // console.log('Drag start:', draggedItem.listType, draggedItem.index); 
         event.dataTransfer.effectAllowed = 'move';
     }
 
     function handleDragOver(event, listType, index) {
         event.preventDefault();
         dragoverItem = { listType, index };
-        // console.log('Drag over:', dragoverItem.listType, dragoverItem.index); 
     }
 
     function handleDrop(event) {
@@ -33,22 +30,14 @@
         draggedItem.listType[draggedItem.index] = dragoverItem.listType[dragoverItem.index];
         dragoverItem.listType[dragoverItem.index] = temp;
 
-        if (draggedItem.listType === userInputList) {
-            userInputList = [...userInputList];
-        } else if (draggedItem.listType === originalAnswerList) {
-            originalAnswerList = [...originalAnswerList];
-        }
+        // Make the assignments reactive
+        userInputList = [...userInputList];
+        originalAnswerList = [...originalAnswerList];
 
-        if (dragoverItem.listType === userInputList) {
-            userInputList = [...userInputList];
-        } else if (dragoverItem.listType === originalAnswerList) {
-            originalAnswerList = [...originalAnswerList];
-        }
+        // console.log('Drag drop:', draggedItem.listType, draggedItem.index, dragoverItem.listType, dragoverItem.index);
 
         draggedItem = null;
         dragoverItem = null;
-
-        // console.log('Drag drop:', draggedItem.listType, draggedItem.index, dragoverItem.listType, dragoverItem.index);
     }
 
     function handleDragEnd() {
