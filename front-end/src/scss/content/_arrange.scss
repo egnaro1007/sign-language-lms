@@ -21,8 +21,8 @@
     &__dinosaur {
         position: absolute;
         height: 480px;
-        bottom: -10px;
-        right: -230px;
+        bottom: 0;
+        right: -25px;
     }
 
     &__scoreboard {
@@ -34,6 +34,9 @@
         right: 65px;
         border: solid 15px rgb(201, 155, 49);
         border-radius: 15px;
+        p {
+            font-size: 34px;
+        }
     }
 
     &__time {
@@ -101,7 +104,6 @@
         display: flex;
         justify-content: center;
         align-items: center;
-        text-align: center;
         background-color: #dbcfbe;
         width: 90%;
         height: 135px;

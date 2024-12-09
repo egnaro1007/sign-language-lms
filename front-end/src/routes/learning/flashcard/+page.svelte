@@ -1,101 +1,31 @@
 <script>
-	import { onMount } from 'svelte';
+	import VideoCard from '$lib/components/VideoCard.svelte';
 
-	// Dữ liệu flashcards (lấy từ API hoặc dữ liệu tĩnh)
-	let flashcards = [
-		{ id: 1, word: 'Mèo', image: '/static/images/meo.jpg', video: '/static/videos/meo.mp4' },
-		
-	];
+	let isFlipped = false;
 
-	// Theo dõi trạng thái lật của từng thẻ
-	let flipped = new Set();
-
-	const flipCard = (id) => {
-		if (flipped.has(id)) {
-			flipped.delete(id);
-		} else {
-			flipped.add(id);
-		}
-	};
+	function toggleCard() {
+		isFlipped = !isFlipped;
+	}
 </script>
 
-<div class="fc">
-	<h1>Bộ Thẻ Ghi Nhớ</h1>
-	
-	<div class="cards">
-		{#each flashcards as card (card.id)}
-			<div class="card" on:click={() => flipCard(card.id)}>
-				{#if flipped.has(card.id)}
-					<div class="back">
-						<video src={card.video} autoplay loop muted></video>
+<div class="flashcard centered">
+	<div class="flashcard__container">
+		<div class="flashcard__center">
+			<div class="flashcard__card" on:click={toggleCard}>
+				<div class="flashcard__inner {isFlipped ? 'flipped' : ''}">
+					<div class="flashcard__side flashcard__front">
+						<img src="/earth.jpg" alt="Trái Đất" />
+						<p>Trái Đất</p>
 					</div>
-				{:else}
-					<div class="front">
-						<img src={card.image} alt={card.word} />
-						<p>{card.word}</p>
+					<div class="flashcard__side flashcard__back">
+						<VideoCard />
 					</div>
-				{/if}
+				</div>
 			</div>
-		{/each}
+		</div>
+		<div class="flashcard__actions">
+			<button class="flashcard__button">Thẻ trước</button>
+			<button class="flashcard__button">Thẻ sau</button>
+		</div>
 	</div>
 </div>
-
-<style>
-	.cards {
-		display: flex;
-		flex-wrap: wrap;
-		gap: 20px;
-		justify-content: center;
-		padding: 20px;
-	}
-
-	.card {
-		width: 200px;
-		height: 300px;
-		perspective: 1000px;
-		cursor: pointer;
-	}
-
-	.front,
-	.back {
-		width: 100%;
-		height: 100%;
-		position: absolute;
-		backface-visibility: hidden;
-		display: flex;
-		flex-direction: column;
-		justify-content: center;
-		align-items: center;
-		border: 1px solid #ccc;
-		box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-		transition: transform 0.6s;
-	}
-
-	.front {
-		background-color: #f9f9f9;
-	}
-
-	.back {
-		transform: rotateY(180deg);
-		background-color: #e0e0e0;
-	}
-
-	.card:hover .front {
-		transform: rotateY(180deg);
-	}
-
-	.card:hover .back {
-		transform: rotateY(0);
-	}
-
-	img {
-		max-width: 100%;
-		height: auto;
-		margin-bottom: 10px;
-	}
-
-	video {
-		max-width: 100%;
-		height: auto;
-	}
-</style>
