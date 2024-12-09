@@ -1,5 +1,6 @@
 <script>
     export let questionData = {};
+    export let increaseScore = () => {};
     let userInputList = [];
     let originalAnswerList = [];
     let draggedItem = null;
@@ -43,6 +44,13 @@
     function handleDragEnd() {
         draggedItem = null;
     }
+
+    function checkAnswer() {
+        console.log(questionData.key.join(' '))
+        if (userInputList.join(' ') === questionData.key.join(' ')) {
+            increaseScore();
+        }
+    }
 </script>
 
 <div>
@@ -79,7 +87,7 @@
             </ul>
         </div>
         <div class="arrange__button">
-            <button class="arrange__submit">Xác nhận</button>
+            <button class="arrange__submit" on:click={ checkAnswer }>Xác nhận</button>
         </div>
         <div class="arrange__choices">
             <ul class="arrange__items">

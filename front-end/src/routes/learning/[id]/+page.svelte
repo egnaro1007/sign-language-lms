@@ -10,6 +10,8 @@
     let currentIndex = 0;
     let loading = true;
 
+    let score = 0;
+
     async function fetchQuestions() {
         loading = true;
         await new Promise(resolve => setTimeout(resolve, 1000));
@@ -47,6 +49,11 @@
     function previousQuestion() {
         currentIndex = Math.max(currentIndex - 1, 0);
     }
+
+    function increaseScore() {
+        score += 1;
+    }
+
     fetchQuestions();
 </script>
 
@@ -63,7 +70,7 @@
             {#if questions[currentIndex].type === 'cloze'}
                 <FillInTheBlank questionData={ questions[currentIndex] } />
             {:else if questions[currentIndex].type === 'rearrangement'}
-                <SentenceRearrangement questionData={ questions[currentIndex] } />
+                <SentenceRearrangement questionData={ questions[currentIndex]} increaseScore={increaseScore} />
             {:else if questions[currentIndex].type === 'translation'}
                 <Translation questionData={ questions[currentIndex] } />
             {/if}
@@ -75,6 +82,6 @@
     <img src="/images/khunglong.png" alt="khunglong" class="arrange__dinosaur" />
     <div class="arrange__scoreboard centered">
         <p>Số điểm</p>
-        <p>0</p>
+        <p>{score}</p>
     </div>
 </div>
