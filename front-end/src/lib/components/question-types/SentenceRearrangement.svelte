@@ -1,10 +1,12 @@
 <script>
     export let questionData = {};
-    export let increaseScore = () => {};
+    export let finishQuestion = () => {};
     let userInputList = [];
     let originalAnswerList = [];
     let draggedItem = null;
     let dragoverItem = null;
+
+    let isChecked = false;
 
     $: if (questionData.answerList) {
         userInputList = new Array(questionData.answerList.length).fill('');
@@ -46,9 +48,14 @@
     }
 
     function checkAnswer() {
-        console.log(questionData.key.join(' '))
-        if (userInputList.join(' ') === questionData.key.join(' ')) {
-            increaseScore();
+        if (!isChecked) {
+            isChecked = true;
+            if (userInputList.join(' ') === questionData.key.join(' ')) {
+                finishQuestion(10);
+            }
+        } else {
+            isChecked = false;
+            finishQuestion();
         }
     }
 </script>
@@ -87,7 +94,9 @@
             </ul>
         </div>
         <div class="arrange__button">
-            <button class="arrange__submit" on:click={ checkAnswer }>Xác nhận</button>
+            <button class="arrange__submit" on:click={ checkAnswer }>
+                {isChecked ? 'Tiếp tục' : 'Kiểm tra'}
+            </button>
         </div>
         <div class="arrange__choices">
             <ul class="arrange__items">

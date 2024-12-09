@@ -50,8 +50,12 @@
         currentIndex = Math.max(currentIndex - 1, 0);
     }
 
-    function increaseScore() {
-        score += 1;
+    function finishQuestion(amount) {
+        if (amount === undefined) {
+            nextQuestion();
+        } else {
+            score += amount;
+        }
     }
 
     fetchQuestions();
@@ -70,7 +74,7 @@
             {#if questions[currentIndex].type === 'cloze'}
                 <FillInTheBlank questionData={ questions[currentIndex] } />
             {:else if questions[currentIndex].type === 'rearrangement'}
-                <SentenceRearrangement questionData={ questions[currentIndex]} increaseScore={increaseScore} />
+                <SentenceRearrangement questionData={ questions[currentIndex]} finishQuestion={ (amount) => finishQuestion(amount) } />
             {:else if questions[currentIndex].type === 'translation'}
                 <Translation questionData={ questions[currentIndex] } />
             {/if}
