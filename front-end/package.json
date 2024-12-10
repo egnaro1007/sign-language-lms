@@ -10,7 +10,7 @@
 		"lint": "prettier --check . && eslint ."
 	},
 	"devDependencies": {
-		"@iconify/svelte": "^4.0.2",
+		"@iconify/svelte": "^4.1.0",
 		"@sveltejs/adapter-auto": "^3.3.1",
 		"@sveltejs/kit": "^2.8.3",
 		"@sveltejs/vite-plugin-svelte": "^4.0.2",
