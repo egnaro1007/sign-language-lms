@@ -3,7 +3,9 @@
 
 @import "components/navbar";
 @import "components/sidebar";
+@import "components/header";
 
-@import "content/arrange";
+@import "content/dashboard";
+@import "content/learning";
 @import "content/lessons";
 @import "content/fc";

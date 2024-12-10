@@ -1,4 +1,8 @@
-<div class="lessons">
+<script>
+	import Splide from "../../../lib/components/Splide.svelte";
+
+</script>
+<!-- <div class="lessons">
 	<div class="lessons__heading">
 		<h1>Học tập</h1>
 		<p>Hãy thử sức với các bài học này nhé</p>
@@ -31,5 +35,42 @@
 				</div>
 			</div>
 		</a>
+	</div>
+</div> -->
+<div class="dashboard">
+	<div class="container">
+		<Splide />
+		<div class="dashboard__topic">
+			<div class="dashboard__topic--heading">
+				<h2>Chủ đề học tập</h2>
+				<h3>Tất cả</h3>
+			</div>
+			<div class="dashboard__topic--list">
+				<a href="/topic">
+					<div class="dashboard__topic__item">
+						<img src="/images/topic.png" />
+						<h3>Giao tiếp cơ bản</h3>
+					</div>
+				</a>
+				<a href="/learning/1">
+					<div class="dashboard__topic__item">
+						<img src="/images/topic.png" />
+						<h3>Gia đình</h3>
+					</div>
+				</a>
+				<a href="/">
+					<div class="dashboard__topic__item">
+						<img src="/images/topic.png" />
+						<h3>Các hành tinh</h3>
+					</div>
+				</a>
+				<a href="/">
+					<div class="dashboard__topic__item">
+						<img src="/images/topic.png" />
+						<h3>Các hành tinh</h3>
+					</div>
+				</a>
+			</div>
+		</div>
 	</div>
 </div>

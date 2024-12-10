@@ -1,0 +1,34 @@
+.dashboard {
+    background-color: #f0f0f1;
+    height: 98vh;
+    margin: 0;
+
+    .container {
+        position: relative;
+        background-color: #ffffff;
+        top: 50px;
+        margin: 0 120px;
+        border-radius: 7px;
+    }
+
+    &__topic {
+        padding: 50px 40px;
+
+        &--heading {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 30px;
+        }
+
+        &--list {
+            display: flex;
+            justify-content: space-around;
+        }
+
+        &__item {
+            text-align: center;
+            background-color: #f0f0f1;
+            border-radius: 5px;
+        }
+    }
+}
