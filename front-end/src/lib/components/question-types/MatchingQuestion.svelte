@@ -105,50 +105,57 @@
 </script>
 
 <div>
-    <h1>{questionData.question || 'Nối các từ với thể hiện của chúng'}</h1>
-    <div class="arrange__items" style="height: 300px;">
-        <div>
-            {#each Object.entries(shuffledAnswer) as [key, value]}
+    <div class="learning__header">
+        <h1>{questionData.question || 'Nối các từ với thể hiện của chúng'}</h1>
+        <h3>{questionData.description}</h3>
+    </div>
+    <ul>
+        <div class="learning__answer">
+            <div class="learning__items">
                 <div>
-                    <button
-                        bind:this={leftRefs[value]}  
-                        on:click={() => handleItemClick(value, 'left')}
-                    >
-                        {Number(value) + 1}. {key}
-                    </button>
-                </div>
-            {/each}
-        </div>
-        <div style="max-height: 100%;">
-            {#each Object.entries(shuffledKey) as [key, value]}
-                <div style="height: 100px;">
-                    <button
-                        bind:this={rightRefs[value]} 
-                        on:click={() => handleItemClick(value, 'right')}
-                        style="width: 100%; height: 100%;"
-                    >
-                        {#if key.startsWith('video:')}
-                            <video 
-                                style="width: auto; height: auto; max-width: 100%; max-height: 100%;" 
-                                loop 
-                                autoplay
+                    {#each Object.entries(shuffledAnswer) as [key, value]}
+                        <div>
+                            <button
+                                bind:this={leftRefs[value]}
+                                on:click={() => handleItemClick(value, 'left')}
                             >
-                                <source src={key.slice(6)} type="video/mp4">
-                                <track kind="captions" srclang="vi" label="Vietnamese" style="display: none;">
-                            </video>
-                        {:else}
-                            {key}
-                        {/if}
-                    </button>
+                                {Number(value) + 1}. {key}
+                            </button>
+                        </div>
+                    {/each}
                 </div>
-            {/each}
+                <div style="max-height: 100%;">
+                    {#each Object.entries(shuffledKey) as [key, value]}
+                        <div style="height: 100px;">
+                            <button
+                                bind:this={rightRefs[value]}
+                                on:click={() => handleItemClick(value, 'right')}
+                                style="width: 100%; height: 100%;"
+                            >
+                                {#if key.startsWith('video:')}
+                                    <video
+                                        style="width: auto; height: auto; max-width: 100%; max-height: 100%;"
+                                        loop
+                                        autoplay
+                                    >
+                                        <source src={key.slice(6)} type="video/mp4">
+                                        <track kind="captions" srclang="vi" label="Vietnamese" style="display: none;">
+                                    </video>
+                                {:else}
+                                    {key}
+                                {/if}
+                            </button>
+                        </div>
+                    {/each}
+                </div>
+            </div>
         </div>
-    </div>
-    <div class="arrange__button">
-        <button class="arrange__submit" on:click={ checkAnswer }>
-            {isChecked ? 'Tiếp tục' : 'Kiểm tra'}
-        </button>
-    </div>
+        <div class="learning__button">
+            <button class="learning__submit" on:click={ checkAnswer }>
+                {isChecked ? 'Tiếp tục' : 'Kiểm tra'}
+            </button>
+        </div>
+    </ul>
     <div>
         <svg style="pointer-events: none; position: absolute; top: 0; left: 0; width: 100%; height: 100%;">
             {#each matches as match}
