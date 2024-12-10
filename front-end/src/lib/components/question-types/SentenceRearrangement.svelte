@@ -61,15 +61,17 @@
 </script>
 
 <div>
-    <h1>{questionData.question || 'Sắp xếp lại từ thành câu có nghĩa'}</h1>
-    <h2>{questionData.description}</h2>
+    <div class="learning__header">
+        <h1>{questionData.question || 'Sắp xếp lại từ thành câu có nghĩa'}</h1>
+        <h3>{questionData.description}</h3>
+    </div>
     <ul>
-        <div class="arrange__answer">
-            <ul class="arrange__items">
+        <div class="learning__answer">
+            <ul class="learning__items">
                 {#if userInputList && userInputList.length > 0}
                     {#each userInputList as item, index}
                         <li 
-                            class={item === '' ? 'arrange__holder' : 'arrange__item'} 
+                            class={item === '' ? 'learning__holder' : 'learning__item'} 
                             draggable={userInputList[index] !== ''}
                             on:dragstart={(event) => handleDragStart(event, userInputList, index)}
                             on:dragend={handleDragEnd}
@@ -93,17 +95,17 @@
                 {/if}
             </ul>
         </div>
-        <div class="arrange__button">
-            <button class="arrange__submit" on:click={ checkAnswer }>
+        <div class="learning__button">
+            <button class="learning__submit" on:click={ checkAnswer }>
                 {isChecked ? 'Tiếp tục' : 'Kiểm tra'}
             </button>
         </div>
-        <div class="arrange__choices">
-            <ul class="arrange__items">
+        <div class="learning__choices">
+            <ul class="learning__items">
                 {#if originalAnswerList && originalAnswerList.length > 0}
                     {#each originalAnswerList as item, index}
                         <li 
-                            class={item === '' ? 'arrange__holder' : 'arrange__item'} 
+                            class={item === '' ? 'learning__holder' : 'learning__item'} 
                             draggable={originalAnswerList[index] !== ''}
                             on:dragstart={(event) => handleDragStart(event, originalAnswerList, index)} 
                             on:dragend={handleDragEnd}
