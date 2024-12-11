@@ -1,21 +1,38 @@
 <script>
 	import { page } from '$app/stores';
 	import Loading from '$lib/components/Loading.svelte';
-	import FillInTheBlank from '$lib/components/question-types/FillInTheBlank.svelte';
-	import SentenceRearrangement from '$lib/components/question-types/SentenceRearrangement.svelte';
-	import Translation from '$lib/components/question-types/Translation.svelte';
-
+    import FillInTheBlank from '$lib/components/question-types/FillInTheBlank.svelte';
+    import SentenceRearrangement from '$lib/components/question-types/SentenceRearrangement.svelte';
+    import Translation from '$lib/components/question-types/Translation.svelte';
+    import MatchingQuestion from '$lib/components/question-types/MatchingQuestion.svelte';
+	
 	const learningID = $page.params.id;
 	let questions = [];
 	let currentIndex = 0;
 	let loading = true;
-
+	
 	let score = 0;
-
+	
 	async function fetchQuestions() {
 		loading = true;
 		await new Promise((resolve) => setTimeout(resolve, 1000));
 		questions = [
+			{
+				questionsID: 0,
+                type: 'matching',
+                answerList: [
+					'sắp xếp',
+                    'từ',
+                    'tạo thành',
+                    'câu đơn'
+                ],
+                key: [
+					'video:https://qipedc.moet.gov.vn/videos/W02931T.mp4',
+                    'video:https://qipedc.moet.gov.vn/videos/W03712.mp4',
+                    'video:https://qipedc.moet.gov.vn/videos/W00559.mp4',
+                    'video:https://qipedc.moet.gov.vn/videos/W00442.mp4'
+                ]
+            },
 			{
 				questionID: 1,
 				type: 'rearrangement',
@@ -45,7 +62,13 @@
 				questionID: 3,
 				type: 'cloze',
 				question: 'Điền từ vào chỗ trống',
-				answerList: ['Câu hỏi', 'điền', , 'vào', 'chỗ trống']
+				answerList: [
+					'video:https://qipedc.moet.gov.vn/videos/W02931T.mp4',
+					'video:https://qipedc.moet.gov.vn/videos/W03712.mp4',
+					'input:',
+					'video:https://qipedc.moet.gov.vn/videos/W00442.mp4'
+				],
+				key: ['tạo thành']
 			},
 			{
 				questionID: 4,
@@ -92,7 +115,10 @@
 			</div>
 
 			{#if questions[currentIndex].type === 'cloze'}
-				<FillInTheBlank questionData={questions[currentIndex]} />
+				<FillInTheBlank 
+					questionData={questions[currentIndex]} 
+					finishQuestion={(amount) => finishQuestion(amount)}
+				/>
 			{:else if questions[currentIndex].type === 'rearrangement'}
 				<SentenceRearrangement
 					questionData={questions[currentIndex]}
@@ -103,6 +129,8 @@
 					questionData={questions[currentIndex]}
 					finishQuestion={(amount) => finishQuestion(amount)}
 				/>
+            {:else if questions[currentIndex].type === 'matching'}
+                <MatchingQuestion questionData={ questions[currentIndex] } finishQuestion={ (amount) => finishQuestion(amount) }/>        
 			{/if}
 
 			<button on:click={previousQuestion} disabled={currentIndex === 0}>Previous</button>
