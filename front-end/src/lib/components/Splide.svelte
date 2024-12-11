@@ -1,6 +1,7 @@
 <script>
 	import { onMount } from 'svelte';
 	import Splide from '@splidejs/splide';
+	import { fade } from 'svelte/transition';
 
 	let splide;
 
@@ -18,12 +19,11 @@
 </script>
 
 <!-- Splide HTML Structure -->
-<div class="splide">
+<div class="splide" out:fade={{ duration: 200 }}>
 	<div class="splide__track">
 		<ul class="splide__list">
-			<li class="splide__slide"><img src="/images/slick.png" alt="Slide 1" /></li>
-			<li class="splide__slide"><img src="/images/slick.png" alt="Slide 2" /></li>
-			<li class="splide__slide"><img src="/images/slick.png" alt="Slide 3" /></li>
+			<li class="splide__slide"><img src="/images/banner1.png" alt="Slide 1" /></li>
+			<li class="splide__slide"><img src="/images/banner2.png" alt="Slide 2" /></li>
 			<!-- Add more slides as needed -->
 		</ul>
 	</div>
