@@ -15,7 +15,7 @@ model_dict = pickle.load(open('./model_checkpoint/model.p', 'rb'))
 model = model_dict['model']
 
 # Labels cho các ký hiệu
-labels_dict = {0: 'hello', 1: 'iloveyou', 2: 'no', 4: 'yes'}
+labels_dict = {0: 'hello', 1: 'iloveyou', 2: 'no', 3: 'yes'}
 
 # Mediapipe khởi tạo
 mp_hands = mp.solutions.hands
@@ -58,11 +58,11 @@ async def detect_sign_language(file: UploadFile):
                     data_aux.append(x - min(x_))
                     data_aux.append(y - min(y_))
 
-                # Dự đoán ký hiệu ngôn ngữ
-                prediction = model.predict([np.asarray(data_aux)])
-                predicted_character = labels_dict[int(prediction[0])]
+               # Dự đoán ký hiệu ngôn ngữ
+            prediction = model.predict([np.asarray(data_aux)])
+            predicted_character = prediction[0]  # Trả về trực tiếp nếu đã là nhãn
+            return {"sign_language": predicted_character}
 
-                return {"sign_language": predicted_character}
         else:
             return {"error": "No hand landmarks detected."}
     except Exception as e:
