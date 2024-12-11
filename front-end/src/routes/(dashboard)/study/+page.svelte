@@ -1,7 +1,13 @@
 <script>
-	import Splide from "../../../lib/components/Splide.svelte";
+	import Splide from '../../../lib/components/Splide.svelte';
+	import { fade } from 'svelte/transition';
+	let showAll = false;
 
+	function toggleShowAll() {
+		showAll = !showAll;
+	}
 </script>
+
 <!-- <div class="lessons">
 	<div class="lessons__heading">
 		<h1>Học tập</h1>
@@ -39,37 +45,63 @@
 </div> -->
 <div class="dashboard">
 	<div class="container">
-		<Splide />
+		{#if !showAll}
+			<Splide />
+		{/if}
 		<div class="dashboard__topic">
 			<div class="dashboard__topic--heading">
 				<h2>Chủ đề học tập</h2>
-				<h3>Tất cả</h3>
+				{#if showAll}
+					<button on:click={toggleShowAll}>Thu gọn</button>
+				{:else}
+					<button on:click={toggleShowAll}>Tất cả</button>
+				{/if}
 			</div>
 			<div class="dashboard__topic--list">
-				<a href="/topic">
+				<a href="/topics/1">
 					<div class="dashboard__topic__item">
-						<img src="/images/topic.png" />
+						<img src="/images/topic com.jpg" />
 						<h3>Giao tiếp cơ bản</h3>
 					</div>
 				</a>
-				<a href="/learning/1">
+				<a href="/topics/2">
 					<div class="dashboard__topic__item">
-						<img src="/images/topic.png" />
+						<img src="/images/topic family.jpg" />
 						<h3>Gia đình</h3>
 					</div>
 				</a>
-				<a href="/">
+				<a href="/topics/3">
 					<div class="dashboard__topic__item">
-						<img src="/images/topic.png" />
-						<h3>Các hành tinh</h3>
+						<img src="/images/topic school.jpg" />
+						<h3>Trường học</h3>
 					</div>
 				</a>
-				<a href="/">
+				<a href="/topics/4">
 					<div class="dashboard__topic__item">
-						<img src="/images/topic.png" />
-						<h3>Các hành tinh</h3>
+						<img src="/images/topic weather.jpg" />
+						<h3>Thời tiết</h3>
 					</div>
 				</a>
+				{#if showAll}
+					<a href="/topics/5">
+						<div class="dashboard__topic__item">
+							<img src="/images/topic com.jpg" />
+							<h3>Giao tiếp cơ bản</h3>
+						</div>
+					</a>
+					<a href="/">
+						<div class="dashboard__topic__item">
+							<img src="/images/topic family.jpg" />
+							<h3>Gia đình</h3>
+						</div>
+					</a>
+					<a href="/">
+						<div class="dashboard__topic__item">
+							<img src="/images/topic school.jpg" />
+							<h3>Trường học</h3>
+						</div>
+					</a>
+				{/if}
 			</div>
 		</div>
 	</div>
