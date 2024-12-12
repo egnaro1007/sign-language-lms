@@ -5,7 +5,7 @@
 <header class="header">
 	<div class="container">
 		<div class="header__left">
-			<img src="/images/logo.png" alt="Logo" />
+			<a href="/"> <img src="/images/logo.png" alt="Logo" /></a>
 			<input type="text" placeholder={searchPlaceholder} style="" />
 		</div>
 		<div class="header__right">

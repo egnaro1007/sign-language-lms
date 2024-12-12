@@ -1,11 +1,27 @@
 <script>
 	import { page } from '$app/stores';
-	import { goto } from '$app/navigation';
 	import { onMount } from 'svelte';
+	import { goto } from '$app/navigation';
 
 	const learningID = $page.params.id;
-
+	let currentIndex = 0;
 	let topicData = {};
+	let isFlipped = false;
+
+	function toggleCard() {
+		isFlipped = !isFlipped;
+	}
+
+	function nextCard() {
+		currentIndex = Math.min(currentIndex + 1, topicData.flashcards.length - 1);
+		isFlipped = false;
+	}
+
+	function previousCard() {
+		currentIndex = Math.max(currentIndex - 1, 0);
+		isFlipped = false;
+	}
+
 	onMount(() => {
 		if (learningID == 1) {
 			topicData = {
@@ -76,46 +92,49 @@
 				]
 			};
 		}
+		console.log(topicData.flashcards[0].text);
 	});
 </script>
 
-<div class="topic">
-	<div class="topic__left">
-		<div class="topic__img">
-			<img src={topicData.img} alt={topicData.title} />
-		</div>
-		<h1>{topicData.title}</h1>
-		<p>{topicData.description}</p>
-		<div class="topic__buttons">
-			<button on:click={goto(`/flashcard/${learningID}`)} class="topic__button"
-				><img src="/images/learning.png" alt="hoc" />Học</button
-			>
-			<button on:click={goto(`/learning/${learningID}`)} class="topic__button"
-				><img src="/images/luyentap.png" alt="luyentap" />Luyện tập</button
-			>
-		</div>
-	</div>
-	<div class="topic__right">
-		<h2>Thẻ</h2>
-		<div class="topic__list">
-			{#each topicData.flashcards as fl}
-				<div class="topic__item">
-					<div class="topic__item--front">
-						<img src={fl.image} alt="flashcard image" />
-						<p>{fl.text}</p>
-					</div>
-					<div class="topic__item--back">
-						<video
-							style="width: 100%; height: auto; max-width: 100%; max-height: 100%;"
-							loop
-							autoplay
-						>
-							<source src={fl.video} type="video/mp4" />
-							<track kind="captions" srclang="vi" label="Vietnamese" style="display: none;" />
-						</video>
+{#if topicData.flashcards}
+	<div class="flashcard centered">
+		<div class="flashcard__container">
+			<div class="flashcard__header">
+				<button on:click={goto(`/topics/${learningID}`)}>Quay lại</button>
+				<h3>Thẻ {currentIndex + 1}/{topicData.flashcards.length}</h3>
+			</div>
+			<div class="flashcard__center">
+				<div class="flashcard__card" on:click={toggleCard}>
+					<div class="flashcard__inner {isFlipped ? 'flipped' : ''}">
+						<div class="flashcard__side flashcard__front">
+							<img src={topicData.flashcards[currentIndex].image} alt="Trái Đất" />
+							<h2>{topicData.flashcards[currentIndex].text}</h2>
+						</div>
+						<div class="flashcard__side flashcard__back">
+							{#key currentIndex}
+							<video
+								style="width: 100%; height: 100%; object-fit: cover; border-radius: 15px;"
+								loop
+								autoplay
+							>
+								<source src={topicData.flashcards[currentIndex].video} type="video/mp4" />
+								<track kind="captions" srclang="vi" label="Vietnamese" style="display: none;" />
+							</video>
+							{/key}
+						</div>
 					</div>
 				</div>
-			{/each}
+			</div>
+			<div class="flashcard__actions">
+				<button class="flashcard__button" disabled={currentIndex === 0} on:click={previousCard}
+					>Thẻ trước</button
+				>
+				<button
+					class="flashcard__button"
+					disabled={currentIndex === topicData.flashcards.length - 1}
+					on:click={nextCard}>Thẻ sau</button
+				>
+			</div>
 		</div>
 	</div>
-</div>
+{/if}

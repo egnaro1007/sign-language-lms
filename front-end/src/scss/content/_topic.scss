@@ -16,6 +16,73 @@
     }
 
     &__right {
+        margin-left: 500px;
+        padding: 60px;
+        h2 {
+            margin-bottom: 20px;
+        }
+    }
 
+    &__list {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 20px;
+    }
+
+    &__item {
+        display: flex;
+        gap: 10px;
+        justify-content: space-around;
+        background-color: $dark-green;
+        padding: 15px;
+        border-radius: 10px;
+        box-shadow: 0 5px 10px rgba(0, 0, 0, 0.5);
+        &:hover {
+            box-shadow: none;
+            border: solid 2px green;
+        }
+
+        &--front {
+            text-align: center;
+            color: white;
+            img {
+                display: block;
+                height: 107px;
+            }
+        }
+
+        &--back {
+            height: 130px;
+        }
+    }
+
+    &__buttons {
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+        margin-top: 20px;
+        width: 250px;
+    }
+    
+    &__button {
+        padding: 5px 20px;
+        color: black;
+        background-color: rgb(230, 203, 105);
+        font-size: 24px;
+        font-family: 'Sigmar', sans-serif;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border: none;
+        border-radius: 7px;
+        &:hover {
+            color: #dbcfbe;
+            border: solid 2px #dbcfbe;
+            cursor: pointer;
+        }
+        img {
+            width: 40px;
+            margin-right: 10px;
+        }
     }
 }

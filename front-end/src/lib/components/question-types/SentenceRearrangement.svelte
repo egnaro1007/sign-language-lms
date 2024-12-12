@@ -52,6 +52,8 @@
             isChecked = true;
             if (userInputList.join(' ') === questionData.key.join(' ')) {
                 finishQuestion(10);
+            } else {
+                finishQuestion(-1);
             }
         } else {
             isChecked = false;
