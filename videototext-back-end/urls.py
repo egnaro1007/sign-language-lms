@@ -11,8 +11,8 @@ model_dict = pickle.load(open('./model_checkpoint/model.p', 'rb'))
 model = model_dict['model']
 
 # Labels cho các ký hiệu
-labels_dict = {0: 'hello', 1: 'iloveyou', 2: 'no', 3: 'yes'}
-
+labels_dict = {0: 'a', 1: 'b', 2: 'c', 3: 'd', 4: 'e', 5: 'hello', 6: 'age', 7: 'acquainted', 8: 'bye',
+               9: 'name'}
 # Mediapipe khởi tạo
 mp_hands = mp.solutions.hands
 mp_drawing = mp.solutions.drawing_utils
@@ -56,6 +56,14 @@ async def detect_sign_language(file: UploadFile):
                # Dự đoán ký hiệu ngôn ngữ
             prediction = model.predict([np.asarray(data_aux)])
             predicted_character = prediction[0]  # Trả về trực tiếp nếu đã là nhãn
+            if(predicted_character == 'hello'):
+                return {"sign_language": "xin chào"}
+            elif(predicted_character == 'age'):
+                return {"sign_language": "tuổi"}
+            elif(predicted_character == 'acquainted'):
+                return {"sign_language": "làm quen"}
+            elif(predicted_character == 'bye'):
+                return {"sign_language": "tạm biệt"}
             return {"sign_language": predicted_character}
 
         else:
