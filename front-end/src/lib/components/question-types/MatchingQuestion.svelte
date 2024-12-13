@@ -106,7 +106,7 @@
 		<h1>{questionData.question || 'Nối các từ với thể hiện của chúng'}</h1>
 	</div>
 	<div class="learning__matching">
-		<div>
+		<div class="learning__column">
 			{#each Object.entries(shuffledAnswer) as [key, value]}
 				<div>
 					<button bind:this={leftRefs[value]} on:click={() => handleItemClick(value, 'left')}>
@@ -115,7 +115,7 @@
 				</div>
 			{/each}
 		</div>
-		<div style="max-height: 100%;">
+		<div class="learning__column" style="max-height: 100%;">
 			{#each Object.entries(shuffledKey) as [key, value]}
 				<div style="height: 100px;">
 					<button

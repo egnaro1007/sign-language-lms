@@ -7,7 +7,19 @@
     &__header {
         display: flex;
         justify-content: space-between;
-        margin: 23px 100px;
+        margin: 23px 200px 0;
+
+        button {
+            border: none;
+            background-color: transparent;
+            img {
+                width: 50px;
+            }
+
+            &:hover {
+                cursor: pointer;
+            }
+        }
     }
 
     &__container {
@@ -20,7 +32,7 @@
     &__center {
         display: flex;
         justify-content: center;
-        margin-top: 45px;
+        margin-top: 25px;
     }
 
     &__card {
@@ -28,19 +40,32 @@
             height: 400px;
             perspective: 1000px;
             cursor: pointer;
+            &::before {
+                    content: '';
+                    position: absolute;
+                    top: -50px;
+                    right: -60px;
+                    width: 60px;
+                    height: 60px;
+                    background-color: rgba(0, 0, 0, 0.1);
+                    border-radius: 50%;
+                    backface-visibility: hidden;
+                    background-image: url('/images/plus.png');
+                    background-size: cover;
+                }
     }
 
     &__inner {
         position: relative;
-            width: 100%;
-            height: 100%;
-            text-align: center;
-            transition: transform 0.8s;
-            transform-style: preserve-3d;
-        
-            &.flipped {
-                transform: rotateY(180deg);
-            }
+        width: 100%;
+        height: 100%;
+        text-align: center;
+        transition: transform 0.8s;
+        transform-style: preserve-3d;
+    
+        &.flipped {
+            transform: rotateY(180deg);
+        }
     }
 
     &__side {
@@ -72,21 +97,32 @@
     }
 
     &__actions {
-        display: flex;
-        justify-content: space-around;
-        margin-top: 50px;
+        position: relative;
     }
 
-    button {
-        background-color: #dbcfbe;
+    &__button {
         border: none;
-        padding: 10px 20px;
         border-radius: 5px;
         cursor: pointer;
-        transition: background-color 0.3s;
+        background-color: transparent;
 
-        &:hover {
-            background-color: #b8a897;
+        &--back {
+            position: absolute;
+            left: 200px;
+        }
+
+        &--next {
+            position: absolute;
+            right: 200px;
+        }
+
+        &:disabled {
+            display: none;
+            cursor: not-allowed;
+        }
+
+        img {
+            width: 130px;
         }
     }
 }

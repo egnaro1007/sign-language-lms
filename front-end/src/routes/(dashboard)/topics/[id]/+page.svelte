@@ -35,9 +35,18 @@
 						video: 'https://qipedc.moet.gov.vn/videos/D0494.mp4'
 					},
 					{
-						text: 'e',
-						image: '/images/letter-e.png',
-						video: 'https://qipedc.moet.gov.vn/videos/D0496.mp4'
+						text: 'g',
+						image: '/images/letter-g.png',
+						video: 'https://qipedc.moet.gov.vn/videos/D0498N.mp4'
+					},
+					{
+						text: 'h',
+						image: '/images/letter-h.png',
+						video: 'https://qipedc.moet.gov.vn/videos/D0500N.mp4'
+					},{
+						text: 'i',
+						image: '/images/letter-i.png',
+						video: 'https://qipedc.moet.gov.vn/videos/D0501.mp4'
 					}
 				]
 			};
@@ -96,7 +105,7 @@
 		</div>
 	</div>
 	<div class="topic__right">
-		<h2>Thẻ</h2>
+		<h2>Danh sách thẻ</h2>
 		<div class="topic__list">
 			{#each topicData.flashcards as fl}
 				<div class="topic__item">

@@ -54,6 +54,21 @@
 						text: 'e',
 						image: '/images/letter-e.png',
 						video: 'https://qipedc.moet.gov.vn/videos/D0496.mp4'
+					},
+					{
+						text: 'g',
+						image: '/images/letter-g.png',
+						video: 'https://qipedc.moet.gov.vn/videos/D0498N.mp4'
+					},
+					{
+						text: 'h',
+						image: '/images/letter-h.png',
+						video: 'https://qipedc.moet.gov.vn/videos/D0500N.mp4'
+					},
+					{
+						text: 'i',
+						image: '/images/letter-i.png',
+						video: 'https://qipedc.moet.gov.vn/videos/D0501.mp4'
 					}
 				]
 			};
@@ -100,7 +115,9 @@
 	<div class="flashcard centered">
 		<div class="flashcard__container">
 			<div class="flashcard__header">
-				<button on:click={goto(`/topics/${learningID}`)}>Quay lại</button>
+				<button on:click={goto(`/topics/${learningID}`)}
+					><img src="/images/out.png" alt="quaylai" /></button
+				>
 				<h3>Thẻ {currentIndex + 1}/{topicData.flashcards.length}</h3>
 			</div>
 			<div class="flashcard__center">
@@ -112,27 +129,29 @@
 						</div>
 						<div class="flashcard__side flashcard__back">
 							{#key currentIndex}
-							<video
-								style="width: 100%; height: 100%; object-fit: cover; border-radius: 15px;"
-								loop
-								autoplay
-							>
-								<source src={topicData.flashcards[currentIndex].video} type="video/mp4" />
-								<track kind="captions" srclang="vi" label="Vietnamese" style="display: none;" />
-							</video>
+								<video
+									style="width: 100%; height: 100%; object-fit: cover; border-radius: 15px;"
+									loop
+									autoplay
+								>
+									<source src={topicData.flashcards[currentIndex].video} type="video/mp4" />
+									<track kind="captions" srclang="vi" label="Vietnamese" style="display: none;" />
+								</video>
 							{/key}
 						</div>
 					</div>
 				</div>
 			</div>
 			<div class="flashcard__actions">
-				<button class="flashcard__button" disabled={currentIndex === 0} on:click={previousCard}
-					>Thẻ trước</button
+				<button
+					class="flashcard__button flashcard__button--back"
+					disabled={currentIndex === 0}
+					on:click={previousCard}><img src="/images/back.png" alt="lui" /></button
 				>
 				<button
-					class="flashcard__button"
+					class="flashcard__button flashcard__button--next"
 					disabled={currentIndex === topicData.flashcards.length - 1}
-					on:click={nextCard}>Thẻ sau</button
+					on:click={nextCard}><img src="/images/next.png" alt="tiep" /></button
 				>
 			</div>
 		</div>

@@ -12,6 +12,7 @@
 	let questions = [];
 	let currentIndex = 0;
 	let loading = true;
+	let bubbleContent = '';
 
 	let score = 0;
 
@@ -30,17 +31,30 @@
 
 	function nextQuestion() {
 		currentIndex = Math.min(currentIndex + 1, questions.length - 1);
+		bubbleContent = '';
 	}
 
 	function previousQuestion() {
 		currentIndex = Math.max(currentIndex - 1, 0);
+		bubbleContent = '';
 	}
 
 	function finishQuestion(amount) {
 		if (amount === undefined) {
 			nextQuestion();
+
+		} else if (amount === -1) {
+			bubbleContent = 'Sai rồi!';
+			setTimeout(() => {
+				bubbleContent = '';
+			}, 2000);
+
 		} else {
+			bubbleContent = 'Đúng rồi!';
 			score += amount;
+			setTimeout(() => {
+				bubbleContent = '';
+			}, 2000);
 		}
 	}
 
@@ -57,39 +71,50 @@
 			</div>
 		{:else}
 			<div class="learning__count">
-				<h3>Câu hỏi:</h3>
+				<h2>Câu:</h2>
 				<span>{currentIndex + 1}/{questions.length}</span>
 			</div>
-
-			{#if questions[currentIndex].type === 'cloze'}
-				<FillInTheBlank
-					questionData={questions[currentIndex]}
-					finishQuestion={(amount) => finishQuestion(amount)}
-				/>
-			{:else if questions[currentIndex].type === 'rearrangement'}
-				<SentenceRearrangement
-					questionData={questions[currentIndex]}
-					finishQuestion={(amount) => finishQuestion(amount)}
-				/>
-			{:else if questions[currentIndex].type === 'translation'}
-				<Translation
-					questionData={questions[currentIndex]}
-					finishQuestion={(amount) => finishQuestion(amount)}
-				/>
-			{:else if questions[currentIndex].type === 'matching'}
-				<MatchingQuestion
-					questionData={questions[currentIndex]}
-					finishQuestion={(amount) => finishQuestion(amount)}
-				/>
-			{/if}
-
-			<button on:click={previousQuestion} disabled={currentIndex === 0}>Previous</button>
-			<button on:click={nextQuestion} disabled={currentIndex === questions.length - 1}>Next</button>
+			{#key currentIndex}
+				{#if questions[currentIndex].type === 'cloze'}
+					<FillInTheBlank
+						questionData={questions[currentIndex]}
+						finishQuestion={(amount) => finishQuestion(amount)}
+					/>
+				{:else if questions[currentIndex].type === 'rearrangement'}
+					<SentenceRearrangement
+						questionData={questions[currentIndex]}
+						finishQuestion={(amount) => finishQuestion(amount)}
+					/>
+				{:else if questions[currentIndex].type === 'translation'}
+					<Translation
+						questionData={questions[currentIndex]}
+						finishQuestion={(amount) => finishQuestion(amount)}
+					/>
+				{:else if questions[currentIndex].type === 'matching'}
+					<MatchingQuestion
+						questionData={questions[currentIndex]}
+						finishQuestion={(amount) => finishQuestion(amount)}
+					/>
+				{/if}
+			{/key}
+			
+			<!-- <button on:click={previousQuestion} disabled={currentIndex === 0}>Previous</button>
+			<button on:click={nextQuestion} disabled={currentIndex === questions.length - 1}>Next</button> -->
 		{/if}
 	</div>
+	{#if bubbleContent}
+		<div class="learning__noti">
+			<img src="/images/bubble.png" alt="bubble">
+			{#if bubbleContent === 'Sai rồi!'}
+				<h3 class="text--false">{bubbleContent}</h3>
+			{:else}
+			<h3 class="text">{bubbleContent}</h3>
+			{/if}
+		</div>
+	{/if}
 	<img src="/images/khunglong.png" alt="khunglong" class="learning__dinosaur" />
 	<div class="learning__scoreboard centered">
-		<p>Số điểm</p>
+		<p>Điểm</p>
 		<p>{score}</p>
 	</div>
 </div>
