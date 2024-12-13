@@ -18,6 +18,9 @@
 			</div>
 		{:else}
 		<div class="header__right">
+			<a href="/rank">
+				<img src="/images/ranking.png" alt="rank">
+			</a>
 			<h4>Đăng nhập</h4>
 			<h4>Đăng ký</h4>
 		</div>

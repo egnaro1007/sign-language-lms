@@ -1,5 +1,7 @@
 .header {
     background-color: #488da6;
+    position: relative;
+    z-index: 1000;
     .container {
         margin: 0 110px;
         padding: 12px;
@@ -25,6 +27,7 @@
 
     &__right {
         display: flex;
+        align-items: center;
         gap: 15px;
         color: white;
         img {

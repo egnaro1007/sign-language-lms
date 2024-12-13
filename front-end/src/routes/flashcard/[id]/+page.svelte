@@ -69,6 +69,21 @@
 						text: 'i',
 						image: '/images/letter-i.png',
 						video: 'https://qipedc.moet.gov.vn/videos/D0501.mp4'
+					},
+					{
+						text: 'k',
+						image: '/images/letter-k.png',
+						video: 'https://qipedc.moet.gov.vn/videos/D0502.mp4'
+					},
+					{
+						text: 'l',
+						image: '/images/letter-l.png',
+						video: 'https://qipedc.moet.gov.vn/videos/D0503.mp4'
+					},
+					{
+						text: 'm',
+						image: '/images/letter-m.png',
+						video: 'https://qipedc.moet.gov.vn/videos/D0504.mp4'
 					}
 				]
 			};

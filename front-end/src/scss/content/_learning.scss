@@ -6,6 +6,28 @@
     position: relative;
     overflow: hidden;
 
+    &__out {
+        position: absolute;
+        top: 35px;
+        left: 35px;
+        border: none;
+        z-index: 100;
+        background-color: transparent;
+    
+        img {
+            width: 60px;
+        }
+    
+        &:hover {
+            cursor: pointer;
+            top: 32px;
+            left: 32px;
+            img {
+                width: 66px;
+            }
+        }
+    }
+
     &__board {
         position: absolute;
         background-color: rgb(53, 56, 57);
@@ -185,7 +207,7 @@
         background-color: #dbcfbe;
         height: 300px;
         word-wrap: break-word;
-        padding: 4px;
+        padding: 25px;
         border-radius: 5px;
     }
     &__camera {
@@ -215,4 +237,13 @@
         gap: 5px;
     }
 
+    &__score {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        color: white;
+        justify-content: center;
+        gap: 30px;
+        height: 70%;
+    }
 }
