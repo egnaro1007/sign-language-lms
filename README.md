@@ -2,7 +2,7 @@
 Dự án hỗ trợ học ngôn ngữ ký hiệu dành cho người khuyết tật nghe nói, cung cấp các tính năng học tập tương tác như flashcard học tập, bài tập thực hành và luyện tập sử dụng model nhận dạng thủ ngữ.
 
 ## 📖 Mô Tả Dự Án:
-Lấy cảm hứng từ Duolingo, đây là trang web hỗ trợ học ngôn ngữ bằng cách cung cấp trải nghiệm trực quan qua hình ảnh và video.
+Lấy cảm hứng từ **Duolingo**, đây là trang web hỗ trợ học ngôn ngữ bằng cách cung cấp trải nghiệm trực quan qua hình ảnh và video.
 - Đa dạng bài giảng, bài tập và các trò chơi giúp học tập và ôn luyện ngôn ngữ ký hiệu.
 - Luyện tập ngôn ngữ ký hiệu theo chủ đề phong phú với nhiều cấp độ hấp dẫn khác nhau.
 - Giao diện thiết kế bắt mắt, sinh động, thao tác đơn giản phù hợp với đối tượng người dùng bình thường và khuyết tật nghe nói ở nhiều độ tuổi.
