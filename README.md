@@ -24,3 +24,8 @@ PostgreSQL (sản phẩm): Cơ sở dữ liệu mạnh mẽ cho triển khai th�
 - Truy cập frontend tại `http://localhost:5173/`
 
 ## 📸 Hình Ảnh Minh Họa
+![image](https://github.com/user-attachments/assets/b5cfc697-c7cd-4e8b-bb68-5addb97d67bc)
+![image](https://github.com/user-attachments/assets/80e83fde-9daf-4b71-b3ec-398eeeee54e6)
+![image](https://github.com/user-attachments/assets/90db5819-fbef-431b-a204-cd94cd7f3ca0)
+![image](https://github.com/user-attachments/assets/b19e7917-93ab-4b2a-8ee2-1fbd444894d5)
+
