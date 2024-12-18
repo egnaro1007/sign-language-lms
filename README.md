@@ -7,7 +7,7 @@ Lấy cảm hứng từ Duolingo, đây là trang web hỗ trợ học ngôn ng�
 - Luyện tập ngôn ngữ ký hiệu theo chủ đề phong phú với nhiều cấp độ hấp dẫn khác nhau.
 - Giao diện thiết kế bắt mắt, sinh động, thao tác đơn giản phù hợp với đối tượng người dùng bình thường và khuyết tật nghe nói ở nhiều độ tuổi.
 
-### Link Video Demo 📽️:
+### Video Demo 📽️: https://youtu.be/b72B-Ina-yM
 
 
 ## 🛠️ Công Nghệ Sử Dụng 
@@ -34,7 +34,7 @@ Lấy cảm hứng từ Duolingo, đây là trang web hỗ trợ học ngôn ng�
 
 ### Backend (dữ liệu bài học)
 - Chuyển đến thư mục:  
-`cd videototext-back-end`  
+`cd data-back-end`  
 - Tạo và kích hoạt môi trường ảo:  
 `python -m venv venv`  
 `source venv/bin/activate` (Linux/Mac) hoặc `venv\Scripts\activate` (Windows)  
